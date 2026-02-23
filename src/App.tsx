@@ -145,6 +145,15 @@ export default function App() {
              backgroundSize: '40px 40px' 
            }} 
       />
+      
+     
+  <div 
+    className="relative w-full h-screen overflow-hidden font-sans select-none touch-none" 
+    style={{ 
+      backgroundColor: currentTheme.bg,
+      overscrollBehavior: 'none' 
+    }}
+  >
 
       {/* Game Stage */}
       <Stage width={dimensions.width} height={dimensions.height} className="canvas-container">
@@ -157,7 +166,11 @@ export default function App() {
             scaleY={prey.scale}
             onClick={handlePreyCatch}
             onTap={handlePreyCatch}
+            listening={true}
+            hitGraphEnabled={true}
           >
+            <Circle radius={40} fill="transparent" />
+            
             {gameState.preyType === 'laser' && (
               <>
                 <Circle radius={currentPreyConfig.size * 1.5} fill="red" opacity={0.2} />
